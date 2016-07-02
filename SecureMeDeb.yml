@@ -301,7 +301,7 @@
         name: " ClamAV Report"
         hour: "16"
         minute: "30"
-        job: "sudo clamscan -ri {{DirToScan}} 2>&1 | mail -s ' ClamAV output of my server' nihel.msilini@gmail.com"
+        job: "sudo clamscan -ri /home/test/WAOUHMEHost/Audit 2>&1 | mail -s ' ClamAV output of my server' nihel.msilini@gmail.com"
   handlers:
     - name: restart ssh
       service: name=ssh state=restarted
