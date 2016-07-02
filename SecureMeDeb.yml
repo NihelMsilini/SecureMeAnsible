@@ -54,16 +54,6 @@
     selinux_policy: targeted
 # SELinux mode (enforcing / permissive / disabled) to label file system in a fresh boot
     selinux_state: permissive
-  vars_prompt:
-      - name: "pass"
-        prompt: "Enter password"
-        private: yes
-        confirm: yes
-        salt_size: 7
-      - name: "DirToScan"
-        prompt: "Please add the dir/file to scan"
-        default: "/home/test/sent"
-        private: no
 # Tasks to perform on the servers
   tasks:
 # Update the system and configure automatic security updates to enhance security
@@ -200,7 +190,7 @@
       action: lineinfile dest=/etc/host.conf regexp="^nospoof" line="nospoof on" state=present
 # Directories and folder scanning with an open source Anti-virus ClamAV
     - name: CalmAV scanning for a specific directory or a file set beforehand with the admin
-      shell: clamscan -ri {{DirToScan}}
+      shell: clamscan -ri /home/test/WAOUHMEHost/Audit
       register: AVScan
     - debug: var=AVScan
 # Display the network state of the server, add c when using the command line to get it continued
